@@ -5,7 +5,7 @@ using UnityEngine;
 public class StarController : MonoBehaviour
 {
     //回転速度
-    private float rotSpeed = 1.0f;
+    private float rotSpeed = 0.5f;
 
     // Start is called before the first frame update
     void Start()
