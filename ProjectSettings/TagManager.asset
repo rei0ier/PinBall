@@ -7,7 +7,7 @@ TagManager:
   - LeftFripperTag
   - RightFripperTag
   - SmallStarTag
-  - LarfeStarTag
+  - LargeStarTag
   - SmallCloudTag
   - LargeCloudTag
   layers:
