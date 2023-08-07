@@ -12,10 +12,7 @@ public class BallController : MonoBehaviour
     private GameObject gameoverText;
 
     //得点を加算する
-    private void OnCollisionEnter(Collision other)
-    {
-        ScoreManager.AddPoints(other.gameObject.tag);
-    }
+    private void OnCollisionEnter(Collision other) => ScoreManager.AddPoints(other.gameObject.tag);
 
     // Start is called before the first frame update
     void Start()

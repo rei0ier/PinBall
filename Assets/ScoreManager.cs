@@ -1,14 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
+    //テキストを参照
+    public Text ScoreText;
+
+
+    //スコアの更新
+    void UpdateScoreText()
+    {
+        ScoreText.text = "score: " + score;
+    }
+    public static ScoreManager instance;
+
+    //スコア
     public static int score = 0;
 
+   
+    // Start is called before the first frame update
+    void Awake()
+    {
+
+        if(instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+
+    }
     public static void AddPoints(string tag)
     {
-        //得点
+
+        //加算
         switch (tag)
         {
             case "SmallStarTag":
@@ -26,12 +58,8 @@ public class ScoreManager : MonoBehaviour
 
         }
         Debug.Log("score: " + score);
+        instance.UpdateScoreText();
 
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame
