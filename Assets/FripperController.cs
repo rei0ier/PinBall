@@ -61,9 +61,9 @@ public class FripperController : MonoBehaviour
         }
 
         //タッチ操作
-        if (Input.touchCount > 0)
+        for(int i =0; i < Input.touchCount; i++)
         {
-            Touch touch = Input.GetTouch(0);
+            Touch touch = Input.GetTouch(i);
 
             //タッチした時
             if (touch.phase == TouchPhase.Began)
@@ -81,10 +81,20 @@ public class FripperController : MonoBehaviour
                 }
             }
 
-            //タッチ離した時、フリッパーを元に戻す
+            //タッチが離された時
             if (touch.phase == TouchPhase.Ended)
             {
-                SetAngle(this.defaultAngle);
+                //離したのが左半分だった時、左フリッパーを戻す
+                if (touch.position.x < Screen.width/2 && tag == "LeftFripperTag")
+                {
+                    SetAngle(this.defaultAngle);
+                }
+
+                //離したのが右半分だった時、右フリッパーを戻す
+                if(touch.position.x > Screen.width/2 && tag == "RightFripperTag")
+                {
+                    SetAngle(this.defaultAngle);
+                }
             }
         }
         
