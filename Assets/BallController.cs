@@ -19,22 +19,23 @@ public class BallController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "LargeStar")
+        if (collision.gameObject.tag == "LargeStarTag")
         {
             score += 20;
         }
-        if (collision.gameObject.tag == "SmallStar")
+        if (collision.gameObject.tag == "SmallStarTag")
         {
             score += 30;
         }
-        if (collision.gameObject.tag == "LargeCloud")
+        if (collision.gameObject.tag == "LargeCloudTag")
         {
             score += 50;
         }
-        if (collision.gameObject.tag == "SmallCloud")
+        if (collision.gameObject.tag == "SmallCloudTag")
         {
             score += 40;
         }
+
     }
 
 
@@ -45,7 +46,7 @@ public class BallController : MonoBehaviour
         this.gameoverText = GameObject.Find("GameOverText");
 
         //シーン中のScoreTextオブジェクトを取得
-        this.ScoreText = GameObject.Find("ScoreText");
+        this.ScoreText = GameObject.Find("ScoreText").gameObject;
         
     }
 
@@ -61,5 +62,6 @@ public class BallController : MonoBehaviour
             //GameOverTextにゲームオーバーを表示
             this.gameoverText.GetComponent<Text>().text = "Game Over";
         }
+
     }
 }
